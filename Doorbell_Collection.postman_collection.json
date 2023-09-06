@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "ec1614fb-0b85-4ba8-8aa8-c446a495c2d3",
+		"name": "Doorbell_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23109754"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "admin-signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\":\"Narendra\",\r\n  \"userEmail\":\"narendracharan25753@gmail.com\",\r\n  \"password\":\"Nc@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/admin-signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"admin-signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin-login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n  \"userName\":\"Narendra\",\r\n  \"password\":\"Nc@1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/admin-login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"admin-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-mail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"userEmail\":\"narendracharan25753@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/send-mail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"send-mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "otp-veirfy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n  \"userEmail\":\"narendracharan25753@gmail.com\",\r\n  \"otp\":\"5470\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/otp-verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"otp-verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"newPassword\":\"Nc@12345\",\r\n   \"confirmPassword\":\"Nc@12345\",\r\n   \"userEmail\":\"narendracharan25753@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/admin-resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"admin-resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token-admin",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjNzJmNjM3MWEzZDg4ZGYyY2ZiZDUiLCJpYXQiOjE2OTMyMjA1NTEsImV4cCI6MTcyNDc1NjU1MX0.03K9oySwvzB6mqk4oHNd0d73mfd5zjrE0sBmRjIj02s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userName",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "adminProfile",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/edit-profile/64ec72f6371a3d88df2cfbd5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"edit-profile",
+								"64ec72f6371a3d88df2cfbd5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "content-listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token-admin",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjNzJmNjM3MWEzZDg4ZGYyY2ZiZDUiLCJpYXQiOjE2OTMyMjA1NTEsImV4cCI6MTcyNDc1NjU1MX0.03K9oySwvzB6mqk4oHNd0d73mfd5zjrE0sBmRjIj02s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/admin/content-list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"content-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-content",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token-admin",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjNzJmNjM3MWEzZDg4ZGYyY2ZiZDUiLCJpYXQiOjE2OTMyMjA1NTEsImV4cCI6MTcyNDc1NjU1MX0.03K9oySwvzB6mqk4oHNd0d73mfd5zjrE0sBmRjIj02s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title_en\":\"Privacy Policy\",\r\n  \"title_ar\":\"معلومات عنا\",\r\n  \"Description_en\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"Description_ar\":\"لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي. و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتع\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/edit-content/64ec8c6e458bcc5680f61041",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"edit-content",
+								"64ec8c6e458bcc5680f61041"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

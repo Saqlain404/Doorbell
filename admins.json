@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "64ec72f6371a3d88df2cfbd5"
+  },
+  "userName": "Narendra Charan",
+  "userEmail": "narendracharan25753@gmail.com",
+  "password": "$2b$10$Hxg2CNfjTO8x2.sFiypNL.DsQbor/TLNHCL6o8xur6pkiUNVq42F.",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1693217526536"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1693222301315"
+    }
+  },
+  "__v": 0,
+  "otp": 5470,
+  "adminProfile": "1693222301293vqqdm.jpg"
+}]

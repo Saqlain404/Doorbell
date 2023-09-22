@@ -1,46 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react'
 import Header from './Header';
-import { CartList } from './httpServices/dashHttpService';
 
-const Cart = () => {
-  const navigate = useNavigate();
-
-  const [count, setCount] = useState(1);
-
-  
-  const [product, setProduct] = useState([]);
-
-  const Products = async () => {
-    const { data } = await CartList();
-    if (!data.error) {
-      setProduct(data.results?.listing);
-    }
-  };
-
-  
-
-  useEffect(() => {
-   Products()
-  }, [])
-
+const MyProfile = () => {
   return (
-    
+  
 <>
-    <Header/>
+<Header/>
   <div className="comman_banner Themecolor_1">
     <div className="container">
       <div className="row align-items-center">
         <div className="col-12">
-          <h1>Cart</h1>
+          <h1>My Profile</h1>
           <div className="breadcrumbs mt-2 mb-0">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb mb-0">
                 <li className="breadcrumb-item">
-                  <a href="javscript:;">Home</a>
+                  <a>Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Cart
+                  My Profile
                 </li>
               </ol>
             </nav>
@@ -49,138 +27,81 @@ const Cart = () => {
       </div>
     </div>
   </div>
-  <div className="cart_page py-5 Themecolor_3">
+  <div className="myaccount py-5 Themecolor_3">
     <div className="container">
-      <div className="row align-items-start">
-        <div className="col-lg-8 mb-lg-0 mb-md-4 mb-4">
-          <div className="cart_table border px-md-4 px-2 py-md-4 py-2 bg-white">
-            <div className="table-responsive">
-              <table className="table mb-0">
-                <thead>
-                  <tr>
-                    <th>Product Details</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                
-                <tbody>
-                {product?.map((item,index)=> (
-
-                  <tr>
-                    <td>
-                      <div className="row align-items-center flex-lg-wrap flex-md-nowrap flex-nowrap">
-                        <div className="col-auto">
-                          <span className="cart_product">
-                            <img src="/img/product1.png" alt="" />
-                          </span>
-                        </div>
-                        <div className="col">
-                          <div className="cart_content">
-                            <h3>{item?.products[0]?.products_Id?.productName}</h3>
-                            <p>
-                              {item?.products[0]?.products_Id?.description}
-                            </p>
-                            <a className="remove_btn" >
-                              Remove
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="number">
-                        <span className="minus" onClick={() => 
-                          {
-                            if(count>1)
-                            setCount(count - 1)}}>-</span>
-                        <input type="text" value={count} />
-                        <span className="plus" onClick={() => setCount(count + 1)}>+</span>
-                      </div>
-                    </td>
-                    <td>
-                      <span className="pricetext">${item?.products[0]?.products_Id?.Price * count}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-4 position_sett">
-        {product?.map((item,index)=> (
-          <div className="product_summry border px-3 py-3 bg-white">
-            <div className="sumry_head Themecolor_1 mb-4">Summary</div>
-            <div className="row justify-content-between pb-2">
+      <div className="row justify-content-center">
+        <div className="col-lg-6">
+          <div className="contact_form border bg-white align-items-center shadow">
+            <div className="myaccount_profile row mb-4 align-items-center">
               <div className="col-auto">
-                <div className="sumry_left">Subtotal :</div>
+                <div className="account_profile position-relative">
+                  <div className="circle">
+                    <img
+                      className="profile-pic"
+                      src="/img/profile_img1.png"
+                    />
+                  </div>
+                  <div className="p-image">
+                    <img
+                      className="upload-button"
+                      src="/img/Camera_icon.png"
+                      alt=""
+                    />
+                    <input
+                      className="file-upload"
+                      type="file"
+                      accept="image/*"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="account_detailss">
+                  <h2>Johny Deo</h2>
+                  <span>USA</span>
+                </div>
               </div>
               <div className="col-auto">
-                <div className="sumry_right">${item?.products[0]?.products_Id?.Price * count}.00</div>
+                <a className="comman_btn shadow">
+                  <span>Edit</span>
+                </a>
               </div>
             </div>
-            <div className="row justify-content-between pb-2">
-              <div className="col-auto">
-                <div className="sumry_left">Shipping (Free) :</div>
-              </div>
-              <div className="col-auto">
-                <div className="sumry_right">$0.00</div>
-              </div>
-            </div>
-            <div className="row justify-content-between pb-2">
-              <div className="col-auto">
-                <div className="sumry_left">Discount :</div>
-              </div>
-              <div className="col-auto">
-                <div className="sumry_right">$0.00</div>
-              </div>
-            </div>
-            <div className="row justify-content-between pb-2">
-              <div className="col-auto">
-                <div className="sumry_left">Order Total :</div>
-              </div>
-              <div className="col-auto">
-                <div className="sumry_right">${item?.products[0]?.products_Id?.Price * count}.00</div>
-              </div>
-            </div>
-            <form className="row mx-0 border-top mt-3 pt-3">
-              <div className="form-floating col-12 px-0 mb-3">
+            <form className="row" action="">
+              <div className="form-floating mb-4 col-md-12 ps-0">
                 <input
                   type="text"
                   className="form-control"
-                  id="floatingInput"
-                  placeholder="Enter Promo Code"
+                  id="name"
+                  defaultValue="Mohd. Arbab"
                 />
-                <label htmlFor="floatingInput">Enter Promo Code</label>
+                <label htmlFor="name">Name</label>
+              </div>
+              <div className="form-floating mb-4 col-md-12 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="number"
+                  defaultValue="+966 28972893742"
+                />
+                <label htmlFor="number">Mobile Number</label>
+              </div>
+              <div className="form-floating mb-4 col-md-12 ps-0">
+                <input
+                  type="email"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="name@example.com"
+                />
+                <label htmlFor="floatingInput">Email address</label>
+              </div>
+              <div className="form-floating text-center ps-0">
                 <a className="comman_btn shadow" href="javascript:;">
-                  <span>Apply</span>
+                  <span>Save</span>
                 </a>
               </div>
             </form>
-            <div className="row">
-              <div className="col-12 mb-3">
-                <p className="Summary_parra">
-                  If you wish to add your GST details for this transaction,
-                  please contact customer care on 2134234234 before completing
-                  your purchase.
-                </p>
-              </div>
-              <div className="col-12">
-                <Link to={"/User/Home/Checkout"}
-                state={{qty: count}}>
-                <a
-                  className="comman_btn shadow d-flex justify-content-center shadow-none  px-0"
-                >
-                  <span className='text-decoration-none'>Procced To Checkout</span>
-                </a>
-                </Link>
-              </div>
-            </div>
           </div>
-                ))}
-
         </div>
       </div>
     </div>
@@ -190,25 +111,25 @@ const Cart = () => {
       <div className="row">
         <div className="col-md-3 col-6 border-end">
           <div className="why_to_buy_box">
-            <i className="fa fa-truck-fast" />
+            <i className="fa-light fa-truck-fast" />
             <h3>Free Shipping</h3>
           </div>
         </div>
         <div className="col-md-3 col-6 border-end">
           <div className="why_to_buy_box">
-            <i className="fa fa-money-bill" />
+            <i className="fa-light fa-money-bill" />
             <h3>COD Available </h3>
           </div>
         </div>
         <div className="col-md-3 col-6 border-end">
           <div className="why_to_buy_box">
-            <i className="fa fa-badge-percent" />
+            <i className="fa-light fa-badge-percent" />
             <h3>Exclusive Deals</h3>
           </div>
         </div>
         <div className="col-md-3 col-6">
           <div className="why_to_buy_box">
-            <i className="fa fa-badge-check" />
+            <i className="fa-light fa-badge-check" />
             <h3>Secured Payment</h3>
           </div>
         </div>
@@ -221,7 +142,7 @@ const Cart = () => {
         <div className="col-md-4 mb-md-0 mb-4">
           <div className="footer_comapny">
             <a href="javascript:;">
-              <img src="/img/logo.png" alt="" />
+              <img src="assets/img/logo.png" alt="" />
             </a>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum,
@@ -270,16 +191,16 @@ const Cart = () => {
           <div className="col-md-4">
             <div className="cards_footer">
               <a href="javascript:;">
-                <img src="/img/Visa.png" alt="" />
+                <img src="assets/img/Visa.png" alt="" />
               </a>
               <a href="javascript:;">
-                <img src="/img/Mastercard.png" alt="" />
+                <img src="assets/img/Mastercard.png" alt="" />
               </a>
               <a href="javascript:;">
-                <img src="/img/Visa.png" alt="" />
+                <img src="assets/img/Visa.png" alt="" />
               </a>
               <a href="javascript:;">
-                <img src="/img/Mastercard.png" alt="" />
+                <img src="assets/img/Mastercard.png" alt="" />
               </a>
             </div>
           </div>
@@ -639,9 +560,54 @@ const Cart = () => {
       </div>
     </div>
   </div>
+  <div
+    className="modal fade login_modal_main"
+    id="logout"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabIndex={-1}
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div className="modal-dialog modal-dialog-centered">
+      <div className="modal-content border-0">
+        <div className="modal-body border-0">
+          <div className="login_modal">
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            />
+            <h2 className="mb-3">Logout</h2>
+            <p>
+              After logging out of your account you will be not able to access.
+            </p>
+            <div className="pt-2">
+              <a
+                href="javascript:;"
+                className="comman_btn shadow mb-3"
+                data-bs-dismiss="modal"
+                type="submit"
+              >
+                <span>Confirm</span>
+              </a>
+              <a
+                className="forgot_password w-100"
+                data-bs-dismiss="modal"
+                href="javascript:;"
+              >
+                Cancel
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </>
 
 )
 }
 
-export default Cart;
+export default MyProfile;

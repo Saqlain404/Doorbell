@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { userVerifyOtp } from '../httpServices/LoginHttpService';
 
 const Verification = () => {
 
-  
+  const navigate = useNavigate();
+ 
+
+  const [value, setValue] = useState("");
+  const [counter, setCounter] = useState(0);
+  let location = useLocation();
+  console.log(location?.state?.email);
+  useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  }, [counter]);
+
+  const VerifyOtp = async (e) => {
+    e.preventDefault();
+    const formData = {
+      email: location?.state?.email?.email,
+      otp: value,
+    };
+    const res = await userVerifyOtp(formData);
+    if (!res?.data?.error) {
+      navigate("/Admin/Reset-password", {
+        state: { email: location?.state?.email?.email },
+      });
+    }
+  };
+  const ResendOtp = async (e) => {
+    setCounter(60);
+    e.preventDefault();
+  };
   return (
  <>
   <div
@@ -34,26 +63,40 @@ const Verification = () => {
                   type="text"
                   className="form-control mx-1 p-1 text-center"
                   id=""
+                  maxLength={1}
+                  onChange={setValue}
+                  placeholder={2}
                 />
                 <input
                   type="text"
                   className="form-control mx-1 p-1 text-center"
                   id=""
+                  maxLength={1}
+                  onChange={setValue}
+                  placeholder={4}
                 />
                 <input
                   type="text"
                   className="form-control mx-1 p-1 text-center"
                   id=""
+                  maxLength={1}
+                  onChange={setValue}
+                  placeholder={9}
                 />
                 <input
                   type="text"
                   className="form-control mx-1 p-1 text-center"
                   id=""
+                  maxLength={1}
+                  onChange={setValue}
+                  placeholder={7}
                 />
               </div>
               <div className="form-group mb-3">
                 <div className="time_js">
-                  <span>01:34</span>
+                {counter ? (
+                          <span className="count_Sec"> 00:{counter}</span>
+                        ) : null}
                 </div>
               </div>
               <div className="form-group mb-3">
@@ -63,13 +106,33 @@ const Verification = () => {
                   data-bs-target="#changepass"
                   className="comman_btn shadow"
                   type="submit"
+                  onClick={VerifyOtp}
                 >
                   <span>Submit</span>
                 </a>
               </div>
               <div className="form-group mb-0">
                 <div className="resend_otp">
-                  Didn't receive the OTP? <a href="javascript:;">Resend OTP?</a>
+                  Didn't receive the OTP? 
+                  {counter ? (
+                            <span
+                              className="otp-sec mx-1 text-dark"
+                              id="resendOTP"
+                              onClick={ResendOtp}
+                            >
+                              Check Your Email.
+                            </span>
+                          ) : (
+                            <span
+                              className="otp-sec mx-1 text-primary"
+                              id="resendOTP"
+                              onClick={ResendOtp}
+                              style={{ cursor: "pointer" }}
+                            >
+                              Request again
+                            </span>
+                          )}
+                          <a href="javascript:;">Resend OTP?</a>
                 </div>
               </div>
             </form>

@@ -1,254 +1,98 @@
-import React from 'react'
-import Login from './Login/LoginUser';
-import ForgotPassword from './Login/ForgotPassword';
-import Verification from './Login/Verification';
-import ResetPassword from './Login/ResetPassword';
-import RegisterUser from './Login/RegisterUser';
+import React, { useEffect, useState } from "react";
+import Login from "./Login/LoginUser";
+// import ForgotPassword from './Login/UserForgotPassword';
+import Verification from "./Login/Verification";
+import ResetPassword from "./Login/ResetPassword";
+import RegisterUser from "./Login/RegisterUser";
+import { Link, useNavigate } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import { ProductList, AddToCart } from "./httpServices/dashHttpService";
+import Swal from "sweetalert2";
+import Header from "./Header";
+import Footer from "./Footer";
+
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const [product, setProduct] = useState([]);
+
+  const Products = async () => {
+    const { data } = await ProductList();
+    if (!data.error) {
+      setProduct(data.results?.productList);
+    }
+  };
+  console.log(product);
+
+  useEffect(() => {
+    Products();
+  }, []);
+
+  const AddCart = async (p_id, price,u_id) => {
+     await AddToCart({
+      product_Id: "64faa9ef14cd13676823a2e9",
+      quantity: "2",
+      Price: "244",
+      user_Id: "64faa9d714cd13676823a2e7",
+    }).then((res) => {
+      console.log(res?.error?.response?.data?.message);
+      if (!res?.error?.response?.data?.error) {
+        Swal.fire({
+          title: "Added to Cart",
+          icon: "success",
+          confirmButtonText: "Go To Cart",
+          
+          confirmButtonColor: "#014a7f",
+          showConfirmButton: true,
+      }).then((result) => {
+        navigate("/User/Home/Cart");
+        });
+      }else if (res?.error?.response?.data?.message === "Access Denied. No token provided."){
+        document.getElementById("modal_click").click()
+      }
+    }).catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Please login to continue",
+        icon: "error",
+        confirmButtonText: "Okay",
+        confirmButtonColor: "#014a7f",
+      });
+    })
+   
+  };
+
+  const AddCart1 = async (p_id, price,u_id) => {
+    await AddToCart({
+     product_Id: "64faa9ef14cd13676823a2e9",
+     quantity: "2",
+     Price: "244",
+     user_Id: "64faa9d714cd13676823a2e7",
+   }).then((res) => {
+     console.log(res?.error?.response?.data?.message);
+     if (!res?.error?.response?.data?.error) {
+     }else if (res?.error?.response?.data?.message === "Access Denied. No token provided."){
+       document.getElementById("modal_click").click()
+     }
+   }).catch((err) => {
+     console.log(err)
+     Swal.fire({
+       title: "Please login to continue",
+       icon: "error",
+       confirmButtonText: "Okay",
+       confirmButtonColor: "#014a7f",
+     });
+   })
+  
+ };
+
+ 
+
   return (
-    
     <>
-      <div className="top_header">
-        <div className="container d-flex align-items-center">
-          <marquee behavior="" direction="">
-            Amania provides a series of service capabilities to help brands
-            quickly complete the product intelligent、sales intelligent and
-            service intelligent.
-          </marquee>
-        </div>
-      </div>
-      <header className="header_main shadow">
-        <div className="container">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-md-4 col-2">
-              <div className="Header_menuss text-start">
-                <a
-                  className="canvas_toggle"
-                  data-bs-toggle="offcanvas"
-                  href="#offcanvasExample1"
-                  role="button"
-                  aria-controls="offcanvasExample1"
-                >
-                  <i className="fa fa-bars" />
-                </a>
-                <div
-                  className="offcanvas offcanvas-start menuss_canvas"
-                  tabIndex={-1}
-                  id="offcanvasExample1"
-                  aria-labelledby="offcanvasExample1Label"
-                >
-                  <div className="offcanvas-header border-bottom">
-                    <h5 className="offcanvas-title" id="offcanvasExampleLabel">
-                      <img src="/img/logo.png" alt="" />
-                    </h5>
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="offcanvas"
-                      aria-label="Close"
-                    />
-                  </div>
-                  <div className="offcanvas-body px-0 pt-0">
-                    <div className="offcanvas-menus">
-                      <a href="index.html">Home</a>
-                      <a href="about-us.html">About Us</a>
-                      <a href="cart.html">Cart</a>
-                      <a href="contact-us.html">Contact Us</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 col-8 text-center px-0">
-              <div className="header_logo">
-                <a href="index.html">
-                  <img src="/img/logo.png" alt="LOGO" />
-                </a>
-              </div>
-            </div>
-            <div className="col-md-4 col-2">
-              <div className="Heder_iconss">
-                <a
-                  data-bs-toggle="modal"
-                  data-bs-target="#login"
-                  className="iconn_same"
-                  href="javascript:;"
-                >
-                  <i className="fa-regular fa-user" />
-                </a>
-                <a
-                  data-bs-toggle="offcanvas"
-                  href="#offcanvasExample"
-                  role="button"
-                  aria-controls="offcanvasExample"
-                  className="iconn_same d-md-block d-none"
-                >
-                  <i className="fa fa-cart-shopping" />
-                </a>
-                <a className="language_sectin" href="javascript:;">
-                  <img src="/img/saudi_flag1.png" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="offcanvas offcanvas-end cart_canvas"
-          tabIndex={-1}
-          id="offcanvasExample"
-          aria-labelledby="offcanvasExampleLabel"
-        >
-          <div className="offcanvas-header border-bottom">
-            <h5 className="offcanvas-title" id="offcanvasExampleLabel">
-              Shopping Cart
-            </h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            />
-          </div>
-          <div className="offcanvas-body">
-            <div className="cart_canvas_inner">
-              <div className="row cart_Product border-bottom py-3">
-                <div className="col-auto">
-                  <a className="cart_img" href="javascript:;">
-                    <img src="assets/img/product1.png" alt="" />
-                  </a>
-                </div>
-                <div className="col ps-0">
-                  <div className="row mb-2">
-                    <div className="col">
-                      <div className="cart_pdetails">
-                        <a href="javascript:;" className="cart_pname">
-                          Wi-Fi Smart Video Doorbell
-                        </a>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <a className="delete_product" href="javascript:;">
-                        <i className="fa-regular fa-trash-can" />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <div className="cart_pdetails">
-                        <div className="number">
-                          <span className="minus">-</span>
-                          <input type="text" defaultValue={0} />
-                          <span className="plus">+</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <span className="product_pricee">$24.99</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row cart_Product border-bottom py-3">
-                <div className="col-auto">
-                  <a className="cart_img" href="javascript:;">
-                    <img src="/img/product1.png" alt="" />
-                  </a>
-                </div>
-                <div className="col ps-0">
-                  <div className="row mb-2">
-                    <div className="col">
-                      <div className="cart_pdetails">
-                        <a href="javascript:;" className="cart_pname">
-                          Wi-Fi Smart Video Doorbell
-                        </a>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <a className="delete_product" href="javascript:;">
-                        <i className="fa-regular fa-trash-can" />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <div className="cart_pdetails">
-                        <div className="number">
-                          <span className="minus">-</span>
-                          <input type="text" defaultValue={0} />
-                          <span className="plus">+</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <span className="product_pricee">$24.99</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row cart_Product border-bottom py-3">
-                <div className="col-auto">
-                  <a className="cart_img" href="javascript:;">
-                    <img src="/img/product1.png" alt="" />
-                  </a>
-                </div>
-                <div className="col ps-0">
-                  <div className="row mb-2">
-                    <div className="col">
-                      <div className="cart_pdetails">
-                        <a href="javascript:;" className="cart_pname">
-                          Wi-Fi Smart Video Doorbell
-                        </a>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <a className="delete_product" href="javascript:;">
-                        <i className="fa-regular fa-trash-can" />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <div className="cart_pdetails">
-                        <div className="number">
-                          <span className="minus">-</span>
-                          <input type="text" defaultValue={0} />
-                          <span className="plus">+</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <span className="product_pricee">$24.99</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="offcanvas-footer">
-            <div className="cart_bottom row">
-              <div className="col-6">
-                <h3 className="subtotal">Subtotal (3 item) :</h3>
-              </div>
-              <div className="col-6 text-end">
-                <div className="price_total">$24.99</div>
-              </div>
-              <div className="col-12 mt-2">
-                <a
-                  className="comman_btn shadow d-flex justify-content-center"
-                  href="checkout.html"
-                >
-                  <span>Checkout</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <div className="banner_part">
+     <Header/>
+      <div className="banner_part mt-6">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6 order-md-0 order-1 mt-md-0 mt-4">
@@ -262,9 +106,10 @@ const Home = () => {
                   doloremque sequi eos repellendus quas incidunt sunt eligendi
                   commodi sint minus aspernatur quod illum ipsam!
                 </p>
-                <a className="comman_btn shadow" href="javascript:;">
+
+                <HashLink className="comman_btn shadow" to="#product" smooth>
                   <span>Shop Now</span>
-                </a>
+                </HashLink>
               </div>
             </div>
             <div className="col-md-6">
@@ -477,83 +322,96 @@ const Home = () => {
                       <img src="/img/product3.jpeg" alt="" />
                     </button>
                   </div>
-                  <div className="carousel-inner">
-                    <div
-                      className="carousel-item active"
-                      data-bs-interval="false"
-                    >
-                      <div className="details_imgg">
+                  {product?.map((item, index) => (
+                    <div className="carousel-inner">
+                      <div
+                        className="carousel-item active"
+                        data-bs-interval="false"
+                      >
+                        <div className="details_imgg">
+                          <img src={item.productImage[3]} alt="" />
+                        </div>
+                      </div>
+                      <div className="carousel-item" data-bs-interval="false">
+                        <div className="details_imgg">
+                          <img src={item.productImage[2]} alt="" />
+                        </div>
+                      </div>
+                      <div className="carousel-item">
+                        <div className="details_imgg">
+                          <img src={item.productImage[1]} alt="" />
+                        </div>
+                      </div>
+                      <div className="carousel-item">
+                        <div className="details_imgg">
+                          <img src={item.productImage[0]} alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {product?.map((item, index) => (
+              <div className="col-lg-6">
+                <div className="product_details_main" id="product">
+                  <h3>{item.productName}</h3>
+                  <p className="description_p">{item.description}</p>
+                  <div className="product__details--info__price mb-3">
+                    <span className="current__price">${item.Price}</span>
+                    <span className="old__price">
+                      <del>${item.oldPrice}</del>
+                    </span>
+                  </div>
+                  <div className="color_product">
+                    <strong>Color: </strong> <span>{item.color}</span>
+                    <div className="color_part">
+                      <a className="select_color" href="javascript:;">
                         <img src="/img/product1.png" alt="" />
-                      </div>
+                      </a>
+                      <a className="select_color" href="javascript:;">
+                        <img src="/img/product1.png" alt="" />
+                      </a>
                     </div>
-                    <div className="carousel-item" data-bs-interval="false">
-                      <div className="details_imgg">
-                        <img src="/img/product2.jpeg" alt="" />
-                      </div>
-                    </div>
-                    <div className="carousel-item">
-                      <div className="details_imgg">
-                        <img src="/img/product5.png" alt="" />
-                      </div>
-                    </div>
-                    <div className="carousel-item">
-                      <div className="details_imgg">
-                        <img src="/img/product3.jpeg" alt="" />
-                      </div>
-                    </div>
+                  </div>
+                  <div className="product_info">
+                    <p className="product__details--info__meta--list">
+                      <strong>Min.Order:</strong>{" "}
+                      <span>{item.quantity} Pieces</span>{" "}
+                    </p>
+                    <p className="product__details--info__meta--list">
+                      <strong>Product model:</strong>{" "}
+                      <span>{item.productModel}</span>{" "}
+                    </p>
+                    <p className="product__details--info__meta--list">
+                      <strong>Protocol:</strong> <span>{item.protocol}</span>{" "}
+                    </p>
+                    <p className="product__details--info__meta--list">
+                      <strong>Certification:</strong>{" "}
+                      <span>{item.certification}</span>{" "}
+                    </p>
+                    <p className="product__details--info__meta--list">
+                      <strong>Max Resolution:</strong>{" "}
+                      <span>{item.maxResolution}</span>{" "}
+                    </p>
+                  </div>
+                  <div className="product_btn mt-3 pt-2">
+                    <a className="comman_btn shadow me-4" onClick={() => AddCart(
+                      item._id, item.Price, item.user_Id
+                    )}>
+                      <span>Add To Cart</span>
+                    </a>
+                    <Link to={"/User/Home/Checkout"}>
+                    <a className="comman_btn shadow" onClick={() => AddCart1(
+                      item._id, item.Price, item.user_Id
+                    )}>
+                      <span>Buy Now</span>
+                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="product_details_main">
-                <h3>Wi-Fi Smart Video Doorbell</h3>
-                <p className="description_p">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Odio iste
-                  delectus
-                </p>
-                <div className="product__details--info__price mb-3">
-                  <span className="current__price">$299.00</span>
-                  <span className="old__price">
-                    <del>$320.00</del>
-                  </span>
-                </div>
-                <div className="color_product">
-                  <strong>Color:</strong>
-                  <div className="color_part">
-                    <a className="select_color" href="javascript:;">
-                      <img src="/img/product1.png" alt="" />
-                    </a>
-                    <a className="select_color" href="javascript:;">
-                      <img src="/img/product1.png" alt="" />
-                    </a>
-                  </div>
-                </div>
-                <div className="product_info">
-                  <p className="product__details--info__meta--list">
-                    <strong>Min.Order:</strong> <span>1000 Pieces</span>{" "}
-                  </p>
-                  <p className="product__details--info__meta--list">
-                    <strong>Product model:</strong> <span>R4115</span>{" "}
-                  </p>
-                  <p className="product__details--info__meta--list">
-                    <strong>Protocol:</strong> <span>Wi-Fi</span>{" "}
-                  </p>
-                  <p className="product__details--info__meta--list">
-                    <strong>Certification:</strong> <span>FCC</span>{" "}
-                  </p>
-                  <p className="product__details--info__meta--list">
-                    <strong>Max Resolution:</strong> <span>1080P/2MP</span>{" "}
-                  </p>
-                </div>
-                <div className="product_btn mt-3 pt-2">
-                  <a className="comman_btn shadow" href="javascript:;">
-                    <span>Buy Now</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -574,7 +432,7 @@ const Home = () => {
             <div className="col-lg-4 col-md-6 mb-lg-0 mb-md-4 mb-4 d-flex align-items-stretch">
               <div className="the_doorbell_box">
                 <span className="dorrbell_ico">
-                <i class="fa-solid fa-video"></i>
+                  <i class="fa-solid fa-video"></i>
                 </span>
                 <h3>Always be in the know</h3>
                 <p>
@@ -672,137 +530,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="why_to_buy">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3 col-6 border-end">
-              <div className="why_to_buy_box">
-                <i className="fa fa-truck-fast" />
-                <h3>Free Shipping</h3>
-              </div>
-            </div>
-            <div className="col-md-3 col-6 border-end">
-              <div className="why_to_buy_box">
-                <i className="fa fa-money-bill" />
-                <h3>COD Available </h3>
-              </div>
-            </div>
-            <div className="col-md-3 col-6 border-end">
-              <div className="why_to_buy_box">
-                <i className="fa fa-badge" />
-                <h3>Exclusive Deals</h3>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className="why_to_buy_box">
-                <i className="fa fa-badge-check" />
-                <h3>Secured Payment</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer className="footer">
-        <div className="container pb-5 border-bottom">
-          <div className="row">
-            <div className="col-md-4 mb-md-0 mb-4">
-              <div className="footer_comapny">
-                <a href="javascript:;">
-                  <img src="/img/logo.png" alt="" />
-                </a>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Rerum, recusandae suscipit a similique nisi dignissimos, nam
-                  aspernatur debitis eum saepe repudiandae,
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4 mb-md-0 mb-4 d-flex justify-content-md-center">
-              <div className="footer_comman">
-                <h2>THE BASIC</h2>
-                <ul>
-                  <li>
-                    <a href="index.html">Home</a>
-                  </li>
-                  <li>
-                    <a href="about-us.html">About Us</a>
-                  </li>
-                  <li>
-                    <a href="contact-us.html">Contact Us</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-md-4 d-flex justify-content-md-center">
-              <div className="footer_comman">
-                <h2>BORING LEGAL STUFF</h2>
-                <ul>
-                  <li>
-                    <a href="refund-policy.html">Refund Policy</a>
-                  </li>
-                  <li>
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                  </li>
-                  <li>
-                    <a href="terms-of-service.html">Terms of Service</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="copy-right py-3">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-md-4">
-                <div className="cards_footer">
-                  <a href="javascript:;">
-                    <img src="/img/Visa.png" alt="" />
-                  </a>
-                  <a href="javascript:;">
-                    <img src="/img/Mastercard.png" alt="" />
-                  </a>
-                  <a href="javascript:;">
-                    <img src="/img/Visa.png" alt="" />
-                  </a>
-                  <a href="javascript:;">
-                    <img src="/img/Mastercard.png" alt="" />
-                  </a>
-                </div>
-              </div>
-              <div className="col-md-4 my-md-0 my-3">
-                <div className="copy-right-text">
-                  <p>© Amania All Rights Reserved 2023</p>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="social_media text-md-end text-center">
-                  <a href="javascript:;">
-                    <i className="fa-brands fa-facebook-f" />
-                  </a>
-                  <a href="javascript:;">
-                    <i className="fa-brands fa-instagram" />
-                  </a>
-                  <a href="javascript:;">
-                    <i className="fa-brands fa-twitter" />
-                  </a>
-                  <a href="javascript:;">
-                    <i className="fa-brands fa-tiktok" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    <Login/>
-    <ForgotPassword/>
-      <Verification/>
-    <ResetPassword/>
-   <RegisterUser/>
+      <Footer/>
+      <Login />
+      {/* <ForgotPassword/> */}
+      <Verification />
+      <ResetPassword />
+      <RegisterUser />
     </>
- 
- )
-}
+  );
+};
 
 export default Home;

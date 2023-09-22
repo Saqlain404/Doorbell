@@ -170,9 +170,11 @@ body{
     font-size: 15px;
     border-radius: 4px;
     overflow: hidden;
+    text-decoration: none;
   }
   .comman_btn span{
     z-index: 1;
+    text-decoration: none;
   }
   .comman_btn::after{
     background-color: #014a7f;
@@ -383,6 +385,7 @@ body{
     display: block;
     margin-bottom: 4px;
     transition: 0.5s all;
+    text-decoration: none;
   }
   .footer_comman ul li a:hover{
     transform: translateY(-5px);
@@ -401,6 +404,7 @@ body{
     transition: 0.5s all;
     color: #014a7f;
     margin-left: 6px;
+    text-decoration: none;
   }
   .social_media a:hover {
     transform: rotateY(350deg);

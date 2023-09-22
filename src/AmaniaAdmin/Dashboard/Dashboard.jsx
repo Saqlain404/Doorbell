@@ -7,7 +7,51 @@ const Dashboard = () => {
       <div className="admin_main">
        <Sidebar/>
         <div className="admin_main_inner">
-         
+        <div className="admin_header shadow">
+            <div className="row align-items-center mx-0 justify-content-between w-100">
+              <div className="col">
+                <a className="sidebar_btn" href="javscript:;">
+                  <i className="fa fa-bars" />
+                </a>
+              </div>
+              <div className="col-auto d-flex align-items-center">
+                <a className="change_language me-3" href="javascript:;">
+                  <img src="/img-admin/saudi_flag1.png" alt="" /> عربى
+                </a>
+                <div className="dropdown Profile_dropdown">
+                  <button
+                    className="btn btn-secondary"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img src="/img-admin/profile_img1.png" alt="" />
+                  </button>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li>
+                      <a className="dropdown-item" >
+                        Edit Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" >
+                        Change Password
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" >
+                        Logout
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>  
           <div className="admin_panel_data height_adjust">
             <div className="row dashboard_part justify-content-center">
               <div className="col-12">

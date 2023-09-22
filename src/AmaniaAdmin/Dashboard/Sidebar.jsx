@@ -14,24 +14,24 @@ const Sidebar = ({ slide, getBarClick, getBar }) => {
   
     let token = localStorage.getItem("token-admin");
     
-    if (token === null) {
-      Swal.fire({
-        title: "PLease Login to Continue!",
-        text: "Login Expired!",
-        icon: "warning",
-        confirmButtonText: "Login",
-        confirmButtonColor: "#e25829",
-      }).then((res) => {
-        navigate("/Admin/Login");
-      });
-    }
+    // if (token === null) {
+    //   Swal.fire({
+    //     title: "PLease Login to Continue!",
+    //     text: "Login Expired!",
+    //     icon: "warning",
+    //     confirmButtonText: "Login",
+    //     confirmButtonColor: "#e25829",
+    //   }).then((res) => {
+    //     navigate("/Admin/Login");
+    //   });
+    // }
     console.log(width);
   
-    const Logout = () => {
-      localStorage.removeItem("token-admin");
-      navigate("/Admin/Login");
-      window.location.reload()
-    };
+    // const Logout = () => {
+    //   localStorage.removeItem("token-admin");
+    //   navigate("/Admin/Login");
+    //   window.location.reload()
+    // };
   return (
     <>
     <div className={sideBar ? "siderbar_section" : " d-none"}>
@@ -44,7 +44,7 @@ const Sidebar = ({ slide, getBarClick, getBar }) => {
                   getBarClick("close");
                 }}
               >
-                <i class="fa fa-close "></i>
+                <i className="fa fa-close "></i>
               </a>
           
         <div className="sidebar_logo">
@@ -96,7 +96,7 @@ const Sidebar = ({ slide, getBarClick, getBar }) => {
                     }}
                   >
                      <i className="fa fa-box-open" />
-                Product Managemnet
+                Product Management
                   </Link>
             </li>
             <li>
@@ -160,7 +160,9 @@ const Sidebar = ({ slide, getBarClick, getBar }) => {
                   </Link>
             </li>
             <li>
-            <Link className="" onClick={Logout}>
+            <Link className="" 
+            // onClick={Logout}
+            >
             <i className="fa fa-sign-out-alt" />
                 Logout
                   </Link>
@@ -168,51 +170,6 @@ const Sidebar = ({ slide, getBarClick, getBar }) => {
           </ul>
         </div>
       </div>
-      <div className="admin_header shadow">
-            <div className="row align-items-center mx-0 justify-content-between w-100">
-              <div className="col">
-                <a className="sidebar_btn" href="javscript:;">
-                  <i className="fa fa-bars" />
-                </a>
-              </div>
-              <div className="col-auto d-flex align-items-center">
-                <a className="change_language me-3" href="javascript:;">
-                  <img src="/img-admin/saudi_flag1.png" alt="" /> عربى
-                </a>
-                <div className="dropdown Profile_dropdown">
-                  <button
-                    className="btn btn-secondary"
-                    type="button"
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <img src="/img-admin/profile_img1.png" alt="" />
-                  </button>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="edit-profile.html">
-                        Edit Profile
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="change-password.html">
-                        Change Password
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="login.html">
-                        Logout
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>  
       </div>
       
     </>

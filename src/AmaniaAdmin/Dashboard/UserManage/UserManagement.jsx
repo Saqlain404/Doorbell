@@ -1,98 +1,23 @@
+import React from 'react'
+import Sidebar from '../Sidebar';
+
+const UserManagement = () => {
+  return (
+   
 <>
-  <meta charSet="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Dashboard</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
-  {/* Favicons */}
-  <link href="assets/img/favicon.png" rel="icon" />
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
-  {/* Vendor CSS Files */}
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link
-    href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-    rel="stylesheet"
-  />
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-  <link href="assets/vendor/owl/owl.carousel.min.css" rel="stylesheet" />
-  <link
-    rel="stylesheet"
-    href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css"
-  />
-  <link href="assets/css/style.css" rel="stylesheet" />
   <div className="admin_main">
-    <div className="siderbar_section">
-      <div className="siderbar_inner">
-        <div className="sidebar_logo">
-          <a href="javscript:;">
-            <img src="assets/img/logo.png" alt="Logo" />{" "}
-          </a>
-        </div>
-        <div className="sidebar_menus">
-          <ul className="list-unstyled ps-1 m-0">
-            <li>
-              <a className="" href="dashboard.html">
-                <i className="fal fa-home" />
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a className="active" href="user-management.html">
-                <i className="fal fa-user" />
-                User Management
-              </a>
-            </li>
-            <li>
-              <a className="" href="product-managemnet.html">
-                <i className="fal fa-user" />
-                Product Managemnet
-              </a>
-            </li>
-            <li>
-              <a className="" href="user-support.html">
-                <i className="fal fa-hands-heart" />
-                User support
-              </a>
-            </li>
-            <li>
-              <a className="" href="transaction-management.html">
-                <i className="far fa-repeat-1" />
-                Transaction Management
-              </a>
-            </li>
-            <li>
-              <a className="" href="content-management.html">
-                <i className="fal fa-user-edit" />
-                Content Management
-              </a>
-            </li>
-            <li>
-              <a className="" href="tutorial-managment.html">
-                <i className="fal fa-play-circle" />
-                Tutorial Managment
-              </a>
-            </li>
-            <li>
-              <a className="" href="login.html">
-                <i className="fal fa-sign-out-alt" />
-                Logout
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <Sidebar/>
     <div className="admin_main_inner">
-      <div className="admin_header shadow">
+    <div className="admin_header shadow">
         <div className="row align-items-center mx-0 justify-content-between w-100">
           <div className="col">
-            <a className="sidebar_btn" href="javscript:;">
-              <i className="far fa-bars" />
+            <a className="sidebar_btn" >
+              <i className="fa fa-bars" />
             </a>
           </div>
           <div className="col-auto d-flex align-items-center">
-            <a className="change_language me-3" href="javascript:;">
-              <img src="assets/img/saudi_flag1.png" alt="" /> عربى
+            <a className="change_language me-3" >
+              <img src="/img-admin/saudi_flag1.png" alt="" /> عربى
             </a>
             <div className="dropdown Profile_dropdown">
               <button
@@ -102,24 +27,24 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img src="assets/img/profile_img1.png" alt="" />
+                <img src="/img-admin/profile_img1.png" alt="" />
               </button>
               <ul
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
                 <li>
-                  <a className="dropdown-item" href="edit-profile.html">
+                  <a className="dropdown-item" >
                     Edit Profile
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="change-password.html">
+                  <a className="dropdown-item" >
                     Change Password
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="login.html">
+                  <a className="dropdown-item" >
                     Logout
                   </a>
                 </li>
@@ -340,3 +265,8 @@
     </div>
   </div>
 </>
+
+)
+}
+
+export default UserManagement;

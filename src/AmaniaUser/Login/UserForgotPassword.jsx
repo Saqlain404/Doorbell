@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { userForgotPass } from '../httpServices/LoginHttpService';
 
 
-const ForgotPassword = () => {
+const UserForgotPassword = () => {
 
   const navigate = useNavigate();
   const {
@@ -15,8 +15,9 @@ const ForgotPassword = () => {
 
   const onSubmit = async (data) => {
     const res = await userForgotPass(data);
-    if (!res?.data.error) {
-      navigate("/Admin/OTP-verify", { state: { email: data } });
+    if (!res?.data?.error) {
+      localStorage.setItem("email",data.userEmail)
+      // navigate("/Admin/OTP-verify");
     }
   };
 
@@ -44,26 +45,36 @@ const ForgotPassword = () => {
             <p className="heade_p">
               We will send you an email to reset your password
             </p>
-            <form action="">
+            <form action=""
+                      onSubmit={handleSubmit(onSubmit)}
+                      >
               <div className="form-floating mb-3">
                 <input
                   type="email"
                   className="form-control"
                   id="floatingInput"
                   placeholder="name@example.com"
+                  name='userEmail'
+                  {...register("userEmail", {
+                    required: "Please Enter Your Email",
+                    // pattern: {
+                    //   value:
+                    //     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    //   message: "Invalid email address",
+                    // },
+                  })}
                 />
                 <label htmlFor="floatingInput">Email address</label>
               </div>
               <div className="form-group mb-0">
-                <a
-                  href="javascript:;"
+                <button
                   data-bs-toggle="modal"
                   data-bs-target="#verify"
                   className="comman_btn shadow"
                   type="submit"
                 >
                   <span>Send OTP</span>
-                </a>
+                </button>
               </div>
             </form>
           </div>
@@ -74,4 +85,4 @@ const ForgotPassword = () => {
   )
 }
 
-export default ForgotPassword;
+export default UserForgotPassword;

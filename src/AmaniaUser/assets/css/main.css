@@ -141,6 +141,7 @@ a{
   display: flex;
   align-items: center;
   padding: 70px 0;
+  margin-top: 110px;
 }
 .banner_part_img img {
   max-width: 180px;
@@ -169,9 +170,11 @@ a{
   font-size: 15px;
   border-radius: 4px;
   overflow: hidden;
+  text-decoration: none;
 }
 .comman_btn span{
   z-index: 1;
+  text-decoration: none;
 }
 .comman_btn::after{
   background-color: #014a7f;
@@ -735,6 +738,7 @@ a{
   display: flex;
   align-items: center;
   position: relative;
+  margin-top: 110px ;
 }
 .comman_banner h1 {
   font-weight: 700;
@@ -1057,6 +1061,7 @@ a{
   border-radius: 4px;
   margin-right: 6px;
   font-size: 13px;
+  text-decoration: none;
 }
 .payment_mode_btns a:hover{
   background-color: #014a7f;
@@ -1117,6 +1122,7 @@ a{
   .comman_btn {
     padding: 10px 22px;
     font-size: 14px;
+    text-decoration: none;
   }
   .aboutus_heading {
     font-size: 28px;
@@ -1473,4 +1479,34 @@ a{
   .payment_mode_btns a {
       font-size: 12px;
   }
+}
+.account_profile .circle {
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  border-radius: 65px;
+}
+ 
+.account_profile .profile-pic {
+  max-height: 100%;
+}
+.account_profile .p-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.account_profile .p-image img {
+  max-width: 60%;
+}
+.account_profile .file-upload {
+  display: none;
 }

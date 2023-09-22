@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const PrivacyPolicy = () => {
   return (
@@ -48,10 +49,10 @@ const PrivacyPolicy = () => {
               </div>
               <div className="offcanvas-body px-0 pt-0">
                 <div className="offcanvas-menus">
-                  <a href="index.html">Home</a>
-                  <a href="about-us.html">About Us</a>
-                  <a href="cart.html">Cart</a>
-                  <a href="contact-us.html">Contact Us</a>
+                <Link to={"/User/Home"}>Home</Link>
+                      <Link to={"/User/Home/About-us"}>About Us</Link>
+                      <Link to={"/User/Home/Cart"}>Cart</Link>
+                      <Link to={"/User/Home/Contact-us"}>Contact Us</Link>
                 </div>
               </div>
             </div>

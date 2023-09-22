@@ -18,15 +18,20 @@ const LoginAdmin = () => {
   }
 
   const onSubmit = async(info) => {
-    const {data} = await adminLogin(
+     await adminLogin(
       {
         userName: info.name,
         password: info.password,
       }
-    )
-    if(!data?.error){
+    ).catch((error)=> {
+      console.log(error)
+     
+    }).then((res)=> {
+      if(!res.data?.error){
         navigate("/Admin/Language-select");
     }
+    })
+    
   }
   return (
    
@@ -46,7 +51,8 @@ const LoginAdmin = () => {
               </div>
               <div className="col-12">
                 <form className="row form-design" 
-                onSubmit={handleSubmit(onSubmit)}>
+                onSubmit={handleSubmit(onSubmit)}
+                >
                   <div className="form-group col-12">
                     <label htmlFor="">User Name</label>
                     <input

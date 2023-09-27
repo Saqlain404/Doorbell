@@ -93,7 +93,7 @@ const Checkout = () => {
 
     if(saveAdd){
       await AddressList({
-        
+
       })
     }
   };
@@ -306,7 +306,7 @@ const Checkout = () => {
                           className="comman_btn shadow d-flex justify-content-center shadow-none px-0 d-none"
                           type="submit"
                           id="order_submit"
-                          // onClick={() => OrderCreate()}
+                          // onClick={() => OrderCreate()} 
                         >
                           Submit
                         </button>

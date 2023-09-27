@@ -262,6 +262,7 @@ body{
     color: #006fc0;
     font-weight: 500;
     font-size: 14px;
+    text-decoration: none;
   }
   .cart_img img {
     max-height: 70px;

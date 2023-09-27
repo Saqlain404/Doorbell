@@ -2,24 +2,33 @@ import React from 'react'
 import Footer from './Footer';
 import Header from './Header';
 
-const MyProfile = () => {
+const MyOrders = () => {
   return (
-  
+   
 <>
-<Header/>
+  <div className="top_header">
+    <div className="container d-flex align-items-center">
+      <marquee behavior="" direction="">
+        Amania provides a series of service capabilities to help brands quickly
+        complete the product intelligent、sales intelligent and service
+        intelligent.
+      </marquee>
+    </div>
+  </div>
+  <Header/>
   <div className="comman_banner Themecolor_1">
     <div className="container">
       <div className="row align-items-center">
         <div className="col-12">
-          <h1>My Profile</h1>
+          <h1>My Order</h1>
           <div className="breadcrumbs mt-2 mb-0">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb mb-0">
                 <li className="breadcrumb-item">
-                  <a>Home</a>
+                  <a href="javscript:;">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  My Profile
+                  My Order
                 </li>
               </ol>
             </nav>
@@ -28,80 +37,205 @@ const MyProfile = () => {
       </div>
     </div>
   </div>
-  <div className="myaccount py-5 Themecolor_3">
+  <div className="my_order py-5 Themecolor_3">
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-lg-6">
-          <div className="contact_form border bg-white align-items-center shadow">
-            <div className="myaccount_profile row mb-4 align-items-center">
-              <div className="col-auto">
-                <div className="account_profile position-relative">
-                  <div className="circle">
-                    <img
-                      className="profile-pic"
-                      src="/img/profile_img1.png"
-                    />
-                  </div>
-                  <div className="p-image">
-                    <img
-                      className="upload-button"
-                      src="/img/Camera_icon.png"
-                      alt=""
-                    />
-                    <input
-                      className="file-upload"
-                      type="file"
-                      accept="image/*"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="account_detailss">
-                  <h2>Johny Deo</h2>
-                  <span>USA</span>
-                </div>
-              </div>
-              <div className="col-auto">
-                <a className="comman_btn shadow">
-                  <span>Edit</span>
-                </a>
-              </div>
+        <div className="col-lg-12 mb-lg-0 mb-md-4 mb-4">
+          <div className="cart_table border px-md-4 px-2 py-md-4 py-2 bg-white">
+            <div className="table-responsive">
+              <table className="table mb-0">
+                <thead>
+                  <tr>
+                    <th>Product Details</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div className="row align-items-center flex-lg-wrap flex-md-nowrap flex-nowrap">
+                        <div className="col-auto">
+                          <span className="cart_product">
+                            <img src="/img/product1.png" alt="" />
+                          </span>
+                        </div>
+                        <div className="col">
+                          <div className="cart_content">
+                            <h3>Wi-Fi Smart Video Doorbell</h3>
+                            <strong className="d-block mb-2">
+                              Order Id : #214123
+                            </strong>
+                            <p>
+                              Lorem ipsum dolor sit, amet consectetur
+                              adipisicing elit.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="pricetext">$751.00</span>
+                    </td>
+                    <td>Order Placed</td>
+                    <td>
+                      <div className="d-flex align-items-center justify-content-center">
+                        <a
+                          data-bs-toggle="modal"
+                          data-bs-target="#viewmodal"
+                          className="comman_btn shadow"
+                          href="javascript:;"
+                        >
+                          <span>View</span>
+                        </a>
+                        <a
+                          className="comman_btn bg-danger shadow"
+                          href="javascript:;"
+                        >
+                          <span>Delete</span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div className="row align-items-center flex-lg-wrap flex-md-nowrap flex-nowrap">
+                        <div className="col-auto">
+                          <span className="cart_product">
+                            <img src="/img/product1.png" alt="" />
+                          </span>
+                        </div>
+                        <div className="col">
+                          <div className="cart_content">
+                            <h3>Wi-Fi Smart Video Doorbell</h3>
+                            <strong className="d-block mb-2">
+                              Order Id : #214123
+                            </strong>
+                            <p>
+                              Lorem ipsum dolor sit, amet consectetur
+                              adipisicing elit.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="pricetext">$751.00</span>
+                    </td>
+                    <td>Order Placed</td>
+                    <td>
+                      <div className="d-flex align-items-center justify-content-center">
+                        <a
+                          data-bs-toggle="modal"
+                          data-bs-target="#viewmodal"
+                          className="comman_btn shadow"
+                          href="javascript:;"
+                        >
+                          <span>View</span>
+                        </a>
+                        <a
+                          className="comman_btn bg-danger shadow"
+                          href="javascript:;"
+                        >
+                          <span>Delete</span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div className="row align-items-center flex-lg-wrap flex-md-nowrap flex-nowrap">
+                        <div className="col-auto">
+                          <span className="cart_product">
+                            <img src="/img/product1.png" alt="" />
+                          </span>
+                        </div>
+                        <div className="col">
+                          <div className="cart_content">
+                            <h3>Wi-Fi Smart Video Doorbell</h3>
+                            <strong className="d-block mb-2">
+                              Order Id : #214123
+                            </strong>
+                            <p>
+                              Lorem ipsum dolor sit, amet consectetur
+                              adipisicing elit.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="pricetext">$751.00</span>
+                    </td>
+                    <td>Order Placed</td>
+                    <td>
+                      <div className="d-flex align-items-center justify-content-center">
+                        <a
+                          data-bs-toggle="modal"
+                          data-bs-target="#viewmodal"
+                          className="comman_btn shadow"
+                          href="javascript:;"
+                        >
+                          <span>View</span>
+                        </a>
+                        <a
+                          className="comman_btn bg-danger shadow"
+                          href="javascript:;"
+                        >
+                          <span>Delete</span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div className="row align-items-center flex-lg-wrap flex-md-nowrap flex-nowrap">
+                        <div className="col-auto">
+                          <span className="cart_product">
+                            <img src="/img/product1.png" alt="" />
+                          </span>
+                        </div>
+                        <div className="col">
+                          <div className="cart_content">
+                            <h3>Wi-Fi Smart Video Doorbell</h3>
+                            <strong className="d-block mb-2">
+                              Order Id : #214123
+                            </strong>
+                            <p>
+                              Lorem ipsum dolor sit, amet consectetur
+                              adipisicing elit.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="pricetext">$751.00</span>
+                    </td>
+                    <td>Order Placed</td>
+                    <td>
+                      <div className="d-flex align-items-center justify-content-center">
+                        <a
+                          data-bs-toggle="modal"
+                          data-bs-target="#viewmodal"
+                          className="comman_btn shadow"
+                          href="javascript:;"
+                        >
+                          <span>View</span>
+                        </a>
+                        <a
+                          className="comman_btn bg-danger shadow"
+                          href="javascript:;"
+                        >
+                          <span>Delete</span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <form className="row" action="">
-              <div className="form-floating mb-4 col-md-12 ps-0">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  defaultValue="Mohd. Arbab"
-                />
-                <label htmlFor="name">Name</label>
-              </div>
-              <div className="form-floating mb-4 col-md-12 ps-0">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="number"
-                  defaultValue="+966 28972893742"
-                />
-                <label htmlFor="number">Mobile Number</label>
-              </div>
-              <div className="form-floating mb-4 col-md-12 ps-0">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="floatingInput"
-                  defaultValue="name@example.com"
-                />
-                <label htmlFor="floatingInput">Email address</label>
-              </div>
-              <div className="form-floating text-center ps-0">
-                <a className="comman_btn shadow" href="javascript:;">
-                  <span>Save</span>
-                </a>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -484,9 +618,69 @@ const MyProfile = () => {
       </div>
     </div>
   </div>
+  <div
+    className="modal fade viewmodal"
+    id="viewmodal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabIndex={-1}
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div className="modal-dialog modal-dialog-centered">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="staticBackdropLabel">
+            PRODUCT DETAILS
+          </h5>
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          />
+        </div>
+        <div className="modal-body p-4">
+          <div className="viewmodal_inner">
+            <div className="row align-items-center text-center justify-content-center">
+              <div className="col-12">
+                <span className="cart_product mx-auto mb-4">
+                  <img src="assets/img/product1.png" alt="" />
+                </span>
+              </div>
+              <div className="col-12">
+                <div className="cart_content">
+                  <h3>Wi-Fi Smart Video Doorbell</h3>
+                  <strong className="d-block mb-2">Order Id : #214123</strong>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  </p>
+                  <strong className="d-block text-dark mb-2 mt-3">
+                    Order Date : 1/09/2023
+                  </strong>
+                  <strong className="d-block text-dark mb-2">
+                    Delivery Address : Lorem ipsum lorem
+                  </strong>
+                  <strong className="d-block text-dark mb-2">
+                    Delivery Date : 20/09/2023{" "}
+                  </strong>
+                  <strong className="d-block text-dark mb-2">
+                    Price : $751.00
+                  </strong>
+                  <strong className="d-block text-dark mb-2">
+                    Status : Order Placed{" "}
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </>
 
 )
 }
 
-export default MyProfile;
+export default MyOrders;

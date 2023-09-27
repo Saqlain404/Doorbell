@@ -13,7 +13,7 @@ export async function ProductList() {
         title: data?.message,
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { data };
@@ -25,7 +25,7 @@ export async function ProductList() {
         text: "",
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { error };
@@ -44,7 +44,7 @@ export async function AddToCart(formData) {
         title: data?.message,
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { data };
@@ -56,7 +56,7 @@ export async function AddToCart(formData) {
         text: "",
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { error };
@@ -74,7 +74,7 @@ export async function RemoveCart(formData) {
         title: data?.message,
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { data };
@@ -86,7 +86,7 @@ export async function RemoveCart(formData) {
         text: "",
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { error };
@@ -96,7 +96,7 @@ export async function CartList(formData) {
   try {
     
     const { data } = await appHttpService.post(
-      `${process.env.REACT_APP_APIENDPOINT}user/carts-list`
+      `${process.env.REACT_APP_APIENDPOINT}user/carts-list/${formData}`
     );
     console.log(data);
     if (data?.error) {
@@ -104,7 +104,7 @@ export async function CartList(formData) {
         title: data?.message,
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { data };
@@ -116,7 +116,7 @@ export async function CartList(formData) {
         text: "",
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#e25829",
+        confirmButtonColor: "#014a7f",
       });
     }
     return { error };
@@ -160,4 +160,33 @@ export async function CreateOrder(formData) {
     return { error };
   }
 }
-
+export async function AddressList(formData) {
+  try {
+    
+    const { data } = await appHttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}user/address-list/${formData}`
+    );
+    console.log(data);
+    if (data?.error) {
+      Swal.fire({
+        title: data?.message,
+        icon: "error",
+        confirmButtonText: "Okay",
+        confirmButtonColor: "#014a7f",
+      });
+    }
+    return { data };
+  } catch (error) {
+    if (error.response) {
+      console.log(error?.response);
+      Swal.fire({
+        title: "Error!",
+        text: "",
+        icon: "error",
+        confirmButtonText: "Okay",
+        confirmButtonColor: "#014a7f",
+      });
+    }
+    return { error };
+  }
+}

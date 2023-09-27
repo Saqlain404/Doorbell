@@ -2,24 +2,33 @@ import React from 'react'
 import Footer from './Footer';
 import Header from './Header';
 
-const MyProfile = () => {
+const MySavedAddress = () => {
   return (
-  
+    
 <>
-<Header/>
+  <div className="top_header">
+    <div className="container d-flex align-items-center">
+      <marquee behavior="" direction="">
+        Amania provides a series of service capabilities to help brands quickly
+        complete the product intelligent、sales intelligent and service
+        intelligent.
+      </marquee>
+    </div>
+  </div>
+  <Header/>
   <div className="comman_banner Themecolor_1">
     <div className="container">
       <div className="row align-items-center">
         <div className="col-12">
-          <h1>My Profile</h1>
+          <h1>My Saved Address</h1>
           <div className="breadcrumbs mt-2 mb-0">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb mb-0">
                 <li className="breadcrumb-item">
-                  <a>Home</a>
+                  <a href="javscript:;">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  My Profile
+                  My Saved Address
                 </li>
               </ol>
             </nav>
@@ -29,76 +38,282 @@ const MyProfile = () => {
     </div>
   </div>
   <div className="myaccount py-5 Themecolor_3">
-    <div className="container">
+    <div className="container-fluid">
       <div className="row justify-content-center">
-        <div className="col-lg-6">
-          <div className="contact_form border bg-white align-items-center shadow">
+        <div className="col-lg-4 mb-lg-0 mb-md-4 mb-4">
+          <div className="contact_form border bg-white align-items-center shadow p-4">
             <div className="myaccount_profile row mb-4 align-items-center">
-              <div className="col-auto">
-                <div className="account_profile position-relative">
-                  <div className="circle">
-                    <img
-                      className="profile-pic"
-                      src="/img/profile_img1.png"
-                    />
-                  </div>
-                  <div className="p-image">
-                    <img
-                      className="upload-button"
-                      src="/img/Camera_icon.png"
-                      alt=""
-                    />
-                    <input
-                      className="file-upload"
-                      type="file"
-                      accept="image/*"
-                    />
-                  </div>
-                </div>
-              </div>
               <div className="col">
-                <div className="account_detailss">
-                  <h2>Johny Deo</h2>
-                  <span>USA</span>
-                </div>
+                <h3 className="top_headd">Home</h3>
               </div>
-              <div className="col-auto">
-                <a className="comman_btn shadow">
+              <div className="col-auto text-end">
+                <a className="comman_btn shadow" href="javascript:;">
                   <span>Edit</span>
                 </a>
               </div>
             </div>
-            <form className="row" action="">
-              <div className="form-floating mb-4 col-md-12 ps-0">
+            <form className="row ms-0" action="">
+              <div className="form-floating mb-4 col-md-6 ps-0">
                 <input
                   type="text"
                   className="form-control"
                   id="name"
+                  defaultValue="UAE"
+                />
+                <label htmlFor="name">Your Country</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="number"
                   defaultValue="Mohd. Arbab"
                 />
-                <label htmlFor="name">Name</label>
+                <label htmlFor="number">Full Name</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="+966 23423423422"
+                />
+                <label htmlFor="floatingInput">Mobile Number</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue={23423}
+                />
+                <label htmlFor="floatingInput">Pincode</label>
               </div>
               <div className="form-floating mb-4 col-md-12 ps-0">
                 <input
                   type="text"
                   className="form-control"
-                  id="number"
-                  defaultValue="+966 28972893742"
+                  id="floatingInput"
+                  defaultValue="Lorem ipsum dolor sit amet consectetur"
                 />
-                <label htmlFor="number">Mobile Number</label>
+                <label htmlFor="floatingInput">Address</label>
               </div>
-              <div className="form-floating mb-4 col-md-12 ps-0">
+              <div className="form-floating mb-4 col-md-4 ps-0">
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
                   id="floatingInput"
-                  defaultValue="name@example.com"
+                  defaultValue="ipsum dolor sit"
                 />
-                <label htmlFor="floatingInput">Email address</label>
+                <label htmlFor="floatingInput">Landmark</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="lorem"
+                />
+                <label htmlFor="floatingInput">City</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="lorem"
+                />
+                <label htmlFor="floatingInput">State</label>
               </div>
               <div className="form-floating text-center ps-0">
                 <a className="comman_btn shadow" href="javascript:;">
-                  <span>Save</span>
+                  <span>Use This Address</span>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="col-lg-4 mb-lg-0 mb-md-4 mb-4">
+          <div className="contact_form border bg-white align-items-center shadow p-4">
+            <div className="myaccount_profile row mb-4 align-items-center">
+              <div className="col">
+                <h3 className="top_headd">Office</h3>
+              </div>
+              <div className="col-auto text-end">
+                <a className="comman_btn shadow" href="javascript:;">
+                  <span>Edit</span>
+                </a>
+              </div>
+            </div>
+            <form className="row ms-0" action="">
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  defaultValue="UAE"
+                />
+                <label htmlFor="name">Your Country</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="number"
+                  defaultValue="Mohd. Arbab"
+                />
+                <label htmlFor="number">Full Name</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="+966 23423423422"
+                />
+                <label htmlFor="floatingInput">Mobile Number</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue={23423}
+                />
+                <label htmlFor="floatingInput">Office Pincode</label>
+              </div>
+              <div className="form-floating mb-4 col-md-12 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="Lorem ipsum dolor sit amet consectetur"
+                />
+                <label htmlFor="floatingInput">Office Address</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="ipsum dolor sit"
+                />
+                <label htmlFor="floatingInput">Landmark</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="lorem"
+                />
+                <label htmlFor="floatingInput">City</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="lorem"
+                />
+                <label htmlFor="floatingInput">State</label>
+              </div>
+              <div className="form-floating text-center ps-0">
+                <a className="comman_btn shadow" href="javascript:;">
+                  <span>Use This Address</span>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="col-lg-4 mb-lg-0 mb-md-4 mb-4">
+          <div className="contact_form border bg-white align-items-center shadow p-4">
+            <div className="myaccount_profile row mb-4 align-items-center">
+              <div className="col">
+                <h3 className="top_headd">Other</h3>
+              </div>
+              <div className="col-auto text-end">
+                <a className="comman_btn shadow" href="javascript:;">
+                  <span>Edit</span>
+                </a>
+              </div>
+            </div>
+            <form className="row ms-0" action="">
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  defaultValue="UAE"
+                />
+                <label htmlFor="name">Your Country</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="number"
+                  defaultValue="Mohd. Arbab"
+                />
+                <label htmlFor="number">Full Name</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="+966 23423423422"
+                />
+                <label htmlFor="floatingInput">Mobile Number</label>
+              </div>
+              <div className="form-floating mb-4 col-md-6 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue={23423}
+                />
+                <label htmlFor="floatingInput">Pincode</label>
+              </div>
+              <div className="form-floating mb-4 col-md-12 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="Lorem ipsum dolor sit amet consectetur"
+                />
+                <label htmlFor="floatingInput">Address</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="ipsum dolor sit"
+                />
+                <label htmlFor="floatingInput">Landmark</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="lorem"
+                />
+                <label htmlFor="floatingInput">City</label>
+              </div>
+              <div className="form-floating mb-4 col-md-4 ps-0">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  defaultValue="lorem"
+                />
+                <label htmlFor="floatingInput">State</label>
+              </div>
+              <div className="form-floating text-center ps-0">
+                <a className="comman_btn shadow" href="javascript:;">
+                  <span>Use This Address</span>
                 </a>
               </div>
             </form>
@@ -107,7 +322,7 @@ const MyProfile = () => {
       </div>
     </div>
   </div>
- <Footer/>
+  <Footer/>
   <div
     className="modal fade login_modal_main"
     id="login"
@@ -486,7 +701,6 @@ const MyProfile = () => {
   </div>
 </>
 
-)
-}
+)}
 
-export default MyProfile;
+export default MySavedAddress;

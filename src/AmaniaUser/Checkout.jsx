@@ -4,10 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "./Footer";
 import Header from "./Header";
-import { CartList, CreateOrder } from "./httpServices/dashHttpService";
+import { AddressList, CartList, CreateOrder } from "./httpServices/dashHttpService";
 
 const Checkout = () => {
   const navigate = useNavigate();
+
+  const [saveAdd, setSaveAdd] = useState(true);
 
   const location = useLocation();
   let qty = location?.state?.qty;
@@ -25,7 +27,7 @@ const Checkout = () => {
     ordernotes: "",
   });
 
-  // const user = localStorage.getItem("user_id");
+  const user = localStorage.getItem("user_id");
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -37,7 +39,7 @@ const Checkout = () => {
   const [product, setProduct] = useState([]);
 
   const Products = async () => {
-    const { data } = await CartList();
+    const { data } = await CartList(user);
     if (!data.error) {
       setProduct(data.results?.listing);
     }
@@ -82,7 +84,18 @@ const Checkout = () => {
   };
 
   const OrderNow = () => {
-    document.getElementById("order_submit").click()
+    document.getElementById("order_submit").click();
+  };
+
+  const SaveAddress = async (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+
+    if(saveAdd){
+      await AddressList({
+        
+      })
+    }
   };
 
   return (
@@ -97,11 +110,9 @@ const Checkout = () => {
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb mb-0">
                     <li className="breadcrumb-item">
-                      <a href="javscript:;">Home</a>
+                      <a>Home</a>
                     </li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      Checkout
-                    </li>
+                    <li className="breadcrumb-item active">Checkout</li>
                   </ol>
                 </nav>
               </div>
@@ -253,12 +264,16 @@ const Checkout = () => {
                         <input
                           type="checkbox"
                           className=" form-check-input  me-2"
-                          name="check"
-                          id="check"
+                          name="save-address"
+                          id="check-save"
                           autoComplete="off"
+                          onChange={(e) => {
+                            SaveAddress(e);
+                            setSaveAdd(!saveAdd);
+                          }}
                         />
                         <label
-                          htmlFor="check"
+                          htmlFor="check-save"
                           className="form-check-label me-4"
                         >
                           {"  "}
@@ -279,8 +294,11 @@ const Checkout = () => {
                         <label htmlFor="name">Order Notes</label>
                       </div>
                       <div className="col-md-4 ps-0">
-                        <Link to={"/User/Home/Cart"}>
-                          <a className="comman_btn shadow d-flex justify-content-center shadow-none text-decoration-none px-0">
+                        <Link
+                          to={"/User/Home/Cart"}
+                          className="text-decoration-none"
+                        >
+                          <a className="comman_btn shadow d-flex justify-content-center shadow-none px-0">
                             <span>Return to cart</span>
                           </a>
                         </Link>
@@ -298,37 +316,39 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
-        {product?.map((item,index)=> (
-            <div className="col-lg-4 position_sett">
-              <div className="product_summry border px-3 py-3 bg-white">
-                <div className="sumry_head Themecolor_1 mb-4">
-                  Order Summary
-                </div>
-                <div className="row cart_Product py-2">
-                  <div className="col-auto">
-                    <a className="cart_img" href="javascript:;">
-                      <img src="/img/product1.png" alt="" />
-                    </a>
+            {product?.map((item, index) => (
+              <div className="col-lg-4 position_sett">
+                <div className="product_summry border px-3 py-3 bg-white">
+                  <div className="sumry_head Themecolor_1 mb-4">
+                    Order Summary
                   </div>
-                  <div className="col ps-0">
-                    <div className="row mb-2">
-                      <div className="col">
-                        <div className="cart_pdetails">
-                          <a href="javascript:;" className="cart_pname">
-                            Wi-Fi Smart Video Doorbell
-                          </a>
-                          <p>Lorem ipsum dolor sit amet.</p>
+                  <div className="row cart_Product py-2">
+                    <div className="col-auto">
+                      <a className="cart_img" href="javascript:;">
+                        <img src="/img/product1.png" alt="" />
+                      </a>
+                    </div>
+                    <div className="col ps-0">
+                      <div className="row mb-2">
+                        <div className="col">
+                          <div className="cart_pdetails">
+                            <a href="javascript:;" className="cart_pname">
+                              Wi-Fi Smart Video Doorbell
+                            </a>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-auto">
-                        <span className="product_pricee">${item?.products[0]?.products_Id?.Price}</span>
+                        <div className="col-auto">
+                          <span className="product_pricee">
+                            ${item?.products[0]?.products_Id?.Price}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <form className="row mx-0 py-3">
-                  <div className="form-floating col-12 px-0">
-                    <input
+                  <form className="row mx-0 py-3">
+                    <div className="form-floating col-12 px-0">
+                      {/* <input
                       type="text"
                       className="form-control"
                       id="floatingInput"
@@ -337,79 +357,83 @@ const Checkout = () => {
                     <label htmlFor="floatingInput">Enter Promo Code</label>
                     <a className="comman_btn shadow" href="javascript:;">
                       <span>Apply</span>
-                    </a>
+                    </a> */}
+                    </div>
+                  </form>
+                  <div className="row justify-content-between pb-2">
+                    <div className="col-auto">
+                      <div className="sumry_left">Subtotal :</div>
+                    </div>
+                    <div className="col-auto">
+                      <div className="sumry_right">
+                        ${item?.products[0]?.products_Id?.Price * qty}.00
+                      </div>
+                    </div>
                   </div>
-                </form>
-                <div className="row justify-content-between pb-2">
-                  <div className="col-auto">
-                    <div className="sumry_left">Subtotal :</div>
+                  <div className="row justify-content-between pb-2">
+                    <div className="col-auto">
+                      <div className="sumry_left">Shipping (Free) :</div>
+                    </div>
+                    <div className="col-auto">
+                      <div className="sumry_right">$0.00</div>
+                    </div>
                   </div>
-                  <div className="col-auto">
-                    <div className="sumry_right">${item?.products[0]?.products_Id?.Price * qty}.00</div>
+                  <div className="row mx-0 justify-content-between border-top py-3">
+                    <div className="col-auto ps-0">
+                      <div className="sumry_left">Total</div>
+                    </div>
+                    <div className="col-auto pe-0">
+                      <div className="sumry_right">
+                        ${item?.products[0]?.products_Id?.Price * qty}.00
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="row justify-content-between pb-2">
-                  <div className="col-auto">
-                    <div className="sumry_left">Shipping (Free) :</div>
+                  <div className="row payment_mode mb-3">
+                    <div className="col-12 mb-3">
+                      <h2 className="checkout_head">Payment</h2>
+                    </div>
+                    <div className="col-12 payment_mode_btns">
+                      <a>Credit</a>
+                      <a>Bank Transfer</a>
+                      <a>Paypal</a>
+                    </div>
                   </div>
-                  <div className="col-auto">
-                    <div className="sumry_right">$0.00</div>
-                  </div>
-                </div>
-                <div className="row mx-0 justify-content-between border-top py-3">
-                  <div className="col-auto ps-0">
-                    <div className="sumry_left">Total</div>
-                  </div>
-                  <div className="col-auto pe-0">
-                    <div className="sumry_right">${item?.products[0]?.products_Id?.Price * qty}.00</div>
-                  </div>
-                </div>
-                <div className="row payment_mode mb-3">
-                  <div className="col-12 mb-3">
-                    <h2 className="checkout_head">Payment</h2>
-                  </div>
-                  <div className="col-12 payment_mode_btns">
-                    <a>Credit</a>
-                    <a>Bank Transfer</a>
-                    <a>Paypal</a>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-12">
-                    <input
+                  <div className="row">
+                    <div className="col-12">
+                      {/* <input
                       type="checkbox"
                       className=" form-check-input  me-2"
                       name="check"
                       id="check"
                       autoComplete="off"
                     />
-                    <label htmlFor="check" className="form-check-label me-4 mb-1">
+                    <label htmlFor="check" className="form-check-label disabled me-4 mb-1">
                       {"  "}
                       Pay Now
-                    </label>
-                    <br />
-                    <input
-                      type="checkbox"
-                      className=" form-check-input  me-2"
-                      name="check"
-                      id="check"
-                      autoComplete="off"
-                    />
-                    <label htmlFor="check" className="form-check-label mb-3">
-                      {"  "}
-                      Cash On Delivery
-                    </label>
-                    <a
-                      className="comman_btn shadow d-flex justify-content-center shadow-none px-0 "
-                      onClick={OrderNow}
-                    >
-                      <span>Order Now</span>
-                    </a>
+                    </label> */}
+                      <br />
+                      <input
+                        type="checkbox"
+                        className=" form-check-input  me-2"
+                        name="check"
+                        id="check"
+                        autoComplete="off"
+                      />
+                      <label htmlFor="check" className="form-check-label mb-3">
+                        {"  "}
+                        Cash On Delivery
+                      </label>
+                      <a
+                        className="comman_btn shadow d-flex justify-content-center shadow-none px-0 text-decoration-none"
+                        onClick={OrderNow}
+                      >
+                        <span>Order Now</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-        ))}
+            ))}
           </div>
         </div>
       </div>

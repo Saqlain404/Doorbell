@@ -2,24 +2,33 @@ import React from 'react'
 import Footer from './Footer';
 import Header from './Header';
 
-const MyProfile = () => {
+const Settings = () => {
   return (
-  
+    
 <>
+  <div className="top_header">
+    <div className="container d-flex align-items-center">
+      <marquee behavior="" direction="">
+        Amania provides a series of service capabilities to help brands quickly
+        complete the product intelligent、sales intelligent and service
+        intelligent.
+      </marquee>
+    </div>
+  </div>
 <Header/>
   <div className="comman_banner Themecolor_1">
     <div className="container">
       <div className="row align-items-center">
         <div className="col-12">
-          <h1>My Profile</h1>
+          <h1>Settings</h1>
           <div className="breadcrumbs mt-2 mb-0">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb mb-0">
                 <li className="breadcrumb-item">
-                  <a>Home</a>
+                  <a href="javscript:;">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  My Profile
+                  Settings
                 </li>
               </ol>
             </nav>
@@ -31,83 +40,121 @@ const MyProfile = () => {
   <div className="myaccount py-5 Themecolor_3">
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-lg-6">
-          <div className="contact_form border bg-white align-items-center shadow">
-            <div className="myaccount_profile row mb-4 align-items-center">
-              <div className="col-auto">
-                <div className="account_profile position-relative">
-                  <div className="circle">
-                    <img
-                      className="profile-pic"
-                      src="/img/profile_img1.png"
-                    />
-                  </div>
-                  <div className="p-image">
-                    <img
-                      className="upload-button"
-                      src="/img/Camera_icon.png"
-                      alt=""
-                    />
-                    <input
-                      className="file-upload"
-                      type="file"
-                      accept="image/*"
-                    />
-                  </div>
+        <div className="col-lg-10 setting_tabs">
+          <ul className="nav nav-pills mb-0" id="pills-tab" role="tablist">
+            <li className="nav-item" role="presentation">
+              <button
+                className="nav-link active shadow"
+                id="pills-home-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-home"
+                type="button"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+              >
+                Password
+              </button>
+            </li>
+            <li className="nav-item" role="presentation">
+              <button
+                className="nav-link shadow"
+                id="pills-profile-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile"
+                aria-selected="false"
+              >
+                Language
+              </button>
+            </li>
+          </ul>
+          <div className="tab-content" id="pills-tabContent">
+            <div
+              className="tab-pane fade show active"
+              id="pills-home"
+              role="tabpanel"
+              aria-labelledby="pills-home-tab"
+            >
+              <div className="row setting_innner contact_form mx-0 border bg-white align-items-center shadow">
+                <div className="col-12">
+                  <form className="row" action="#">
+                    <div className="form-floating mb-4 col-md-6 ps-0">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        defaultValue="hfD12@fdbgdfbg"
+                      />
+                      <label htmlFor="name">Enter Old Password</label>
+                    </div>
+                    <div className="form-floating mb-4 col-md-6 ps-0"></div>
+                    <div className="form-floating mb-4 col-md-6 ps-0">
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="name"
+                        defaultValue="hfD12@fdbgdfbg"
+                      />
+                      <label htmlFor="name">Enter New Password</label>
+                    </div>
+                    <div className="form-floating mb-4 col-md-6 ps-0">
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="name"
+                        defaultValue="hfD12@fdbgdfbg"
+                      />
+                      <label htmlFor="name">Confirm New Password</label>
+                    </div>
+                    <div className="form-floating text-center ps-0">
+                      <a className="comman_btn shadow" href="javascript:;">
+                        <span>Save Changes</span>
+                      </a>
+                    </div>
+                  </form>
                 </div>
-              </div>
-              <div className="col">
-                <div className="account_detailss">
-                  <h2>Johny Deo</h2>
-                  <span>USA</span>
-                </div>
-              </div>
-              <div className="col-auto">
-                <a className="comman_btn shadow">
-                  <span>Edit</span>
-                </a>
               </div>
             </div>
-            <form className="row" action="">
-              <div className="form-floating mb-4 col-md-12 ps-0">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  defaultValue="Mohd. Arbab"
-                />
-                <label htmlFor="name">Name</label>
+            <div
+              className="tab-pane fade"
+              id="pills-profile"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab"
+            >
+              <div className="row setting_innner contact_form mx-0 border bg-white align-items-center shadow">
+                <div className="col-12">
+                  <form className="row" action="#">
+                    <div className="form-floating col-12 ps-0 mb-4">
+                      <select
+                        className="form-select"
+                        id="floatingSelect"
+                        aria-label="Floating label select example"
+                      >
+                        <option selected="">English</option>
+                        <option value={1}>Arabic</option>
+                        <option value={2}>Two</option>
+                        <option value={3}>Three</option>
+                      </select>
+                      <label htmlFor="floatingSelect">Language</label>
+                    </div>
+                    <div className="form-floating text-center ps-0">
+                      <a className="comman_btn shadow" href="javascript:;">
+                        <span>Save Changes</span>
+                      </a>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <div className="form-floating mb-4 col-md-12 ps-0">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="number"
-                  defaultValue="+966 28972893742"
-                />
-                <label htmlFor="number">Mobile Number</label>
-              </div>
-              <div className="form-floating mb-4 col-md-12 ps-0">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="floatingInput"
-                  defaultValue="name@example.com"
-                />
-                <label htmlFor="floatingInput">Email address</label>
-              </div>
-              <div className="form-floating text-center ps-0">
-                <a className="comman_btn shadow" href="javascript:;">
-                  <span>Save</span>
-                </a>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
- <Footer/>
+  <Footer/>
   <div
     className="modal fade login_modal_main"
     id="login"
@@ -489,4 +536,4 @@ const MyProfile = () => {
 )
 }
 
-export default MyProfile;
+export default Settings;

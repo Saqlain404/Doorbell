@@ -15,6 +15,8 @@ import Footer from "./Footer";
 const Home = () => {
   const navigate = useNavigate();
 
+  const userId = localStorage.getItem("user_id");
+
   const [product, setProduct] = useState([]);
 
   const Products = async () => {
@@ -31,10 +33,10 @@ const Home = () => {
 
   const AddCart = async (p_id, price,u_id) => {
      await AddToCart({
-      product_Id: "64faa9ef14cd13676823a2e9",
-      quantity: "2",
-      Price: "244",
-      user_Id: "64faa9d714cd13676823a2e7",
+      product_Id: p_id,
+      quantity: 1,
+      Price: price,
+      user_Id: userId,
     }).then((res) => {
       console.log(res?.error?.response?.data?.message);
       if (!res?.error?.response?.data?.error) {
@@ -364,7 +366,7 @@ const Home = () => {
                     </span>
                   </div>
                   <div className="color_product">
-                    <strong>Color: </strong> <span>{item.color}</span>
+                    <strong>Color:</strong>{"  "} <span>{item.color}</span>
                     <div className="color_part">
                       <a className="select_color" href="javascript:;">
                         <img src="/img/product1.png" alt="" />

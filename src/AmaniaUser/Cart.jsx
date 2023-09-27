@@ -6,13 +6,15 @@ import { CartList } from './httpServices/dashHttpService';
 const Cart = () => {
   const navigate = useNavigate();
 
+  const user = localStorage.getItem("user_id");
+
   const [count, setCount] = useState(1);
 
   
   const [product, setProduct] = useState([]);
 
   const Products = async () => {
-    const { data } = await CartList();
+    const { data } = await CartList(user);
     if (!data.error) {
       setProduct(data.results?.listing);
     }
@@ -147,7 +149,7 @@ const Cart = () => {
             </div>
             <form className="row mx-0 border-top mt-3 pt-3">
               <div className="form-floating col-12 px-0 mb-3">
-                <input
+                {/* <input
                   type="text"
                   className="form-control"
                   id="floatingInput"
@@ -156,7 +158,7 @@ const Cart = () => {
                 <label htmlFor="floatingInput">Enter Promo Code</label>
                 <a className="comman_btn shadow" href="javascript:;">
                   <span>Apply</span>
-                </a>
+                </a> */}
               </div>
             </form>
             <div className="row">
@@ -169,7 +171,7 @@ const Cart = () => {
               </div>
               <div className="col-12">
                 <Link to={"/User/Home/Checkout"}
-                state={{qty: count}}>
+                state={{qty: count}} className="text-decoration-none">
                 <a
                   className="comman_btn shadow d-flex justify-content-center shadow-none  px-0"
                 >

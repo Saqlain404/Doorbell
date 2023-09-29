@@ -20,9 +20,10 @@ const SidebarCart = () => {
   
     
   
-    useEffect(() => {
-     Products()
-    }, [])
+
+    // useEffect(() => {
+    //  Products()
+    // }, [])
   return (
     <> 
     <div

@@ -43,7 +43,6 @@ const Header = () => {
       key: "Settings",
     },
   ];
-  
 
   return (
     <>
@@ -214,11 +213,23 @@ const Header = () => {
                   >
                     <i className="fa fa-cart-shopping" />
                   </a>
-                  <Link to={"/User/Home/My-profile"}>
-                    <a className="language_sectin">
-                      <img src="/img/saudi_flag1.png" alt="" />
+                  {/* <Dropdown
+                    menu={{
+                      item,
+                    }}
+                    trigger={["click"]}
+                  >
+                    <a 
+                    // onClick={(e) => e.preventDefault()} 
+                    className="language_sectin" >
+                      <Space>
+                        <img src="/img/united-kingdom.png" alt="" />
+                      </Space>
                     </a>
-                  </Link>
+                  </Dropdown> */}
+                  <a className="language_sectin">
+                      <img src="/img/united-kingdom.png" alt="" />
+                    </a>
                 </div>
               </div>
             </div>
@@ -226,11 +237,11 @@ const Header = () => {
           <SidebarCart />
         </header>
       </div>
-      <LoginUser/>
-      <UserForgotPassword/>
+      <LoginUser />
+      <UserForgotPassword />
       <Verification />
       <ResetPassword />
-      <RegisterUser/>
+      <RegisterUser />
     </>
   );
 };

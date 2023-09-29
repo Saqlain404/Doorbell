@@ -50,7 +50,8 @@ const Home = () => {
       }).then((result) => {
         navigate("/User/Home/Cart");
         });
-      }else if (res?.error?.response?.data?.message === "Access Denied. No token provided."){
+      }
+      else if (res?.error?.response?.data?.message === "Access Denied. No token provided."){
         document.getElementById("modal_click").click()
       }
     }).catch((err) => {
@@ -67,14 +68,15 @@ const Home = () => {
 
   const AddCart1 = async (p_id, price,u_id) => {
     await AddToCart({
-     product_Id: "64faa9ef14cd13676823a2e9",
-     quantity: "2",
-     Price: "244",
-     user_Id: "64faa9d714cd13676823a2e7",
+      product_Id: p_id,
+      quantity: 1,
+      Price: price,
+      user_Id: userId,
    }).then((res) => {
      console.log(res?.error?.response?.data?.message);
      if (!res?.error?.response?.data?.error) {
-     }else if (res?.error?.response?.data?.message === "Access Denied. No token provided."){
+     }
+     else if (res?.error?.response?.data?.message === "Access Denied. No token provided."){
        document.getElementById("modal_click").click()
      }
    }).catch((err) => {
